@@ -1,4 +1,4 @@
-async function postWithTimeout(url, ms) {
+async function postWithTimeout(url, body, ms) {
   const fetch = require("node-fetch");
   const AbortController = require("node-abort-controller");
 
@@ -12,7 +12,7 @@ async function postWithTimeout(url, ms) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id: 0, name: "hogehoge" }),
+    body: JSON.stringify(body),
     signal: controller.signal, // シグナルを渡しておく
   };
 
@@ -22,7 +22,7 @@ async function postWithTimeout(url, ms) {
     return JSON.stringify(body);
   } catch (error) {
     if (error.type == "aborted") {
-      console.log(`the user aborted a request.`);
+      console.log("the user aborted a request");
       throw new Error(JSON.stringify({ type: "abort" }));
     }
 
