@@ -50,12 +50,12 @@ func TestRight(t *testing.T) {
 		mY: 1,
 	}
 
-	rs := Right(*s)
+	s = Right(*s)
 
 	expected := 2
 
-	if rs.pX != expected {
-		t.Fatalf("Right() is pX + 1,  want %d, got %d", expected, rs.pX)
+	if s.pX != expected {
+		t.Fatalf("Right() is pX + 1,  want %d, got %d", expected, s.pX)
 	}
 }
 
@@ -69,12 +69,12 @@ func TestDown(t *testing.T) {
 		mY: 1,
 	}
 
-	ds := Down(*s)
+	s = Down(*s)
 
 	expected := 1
 
-	if ds.pY != expected {
-		t.Fatalf("Down() is pY + 1,  want %d, got %d", expected, ds.pY)
+	if s.pY != expected {
+		t.Fatalf("Down() is pY + 1,  want %d, got %d", expected, s.pY)
 	}
 }
 
@@ -88,10 +88,10 @@ func TestCollision(t *testing.T) {
 		mY: 1,
 	}
 
-	rs := Right(*s)
-	ds := Down(*rs)
+	s = Right(*s)
+	s = Down(*s)
 
-	if s.pY == ds.bY {
+	if s.pY == s.bY {
 		t.Fatal("OMG, The player and baggage collided!!")
 	}
 }
