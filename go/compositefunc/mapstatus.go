@@ -45,12 +45,22 @@ func (m *MapStatus) move(x, y int) {
 	}
 }
 
+type MoveParam func(MapStatus) *MapStatus
+
+func (m MoveParam) Union() string { return "hoge" }
+
+type Command interface {
+	Union() string
+}
+
 // Right 右へ進む
-func (m *MapStatus) Right() {
+func Right(m MapStatus) *MapStatus {
 	m.move(1, 0)
+	return &m
 }
 
 // Down 下へ進む
-func (m *MapStatus) Down() {
+func Down(m MapStatus) *MapStatus {
 	m.move(0, 1)
+	return &m
 }

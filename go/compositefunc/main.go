@@ -1,17 +1,28 @@
 package main
 
-import "github.com/davecgh/go-spew/spew"
+import (
+	"fmt"
+)
 
 func main() {
+	var cmds []Command
 
-	hoge := NewMapStatus()
-	// clone := hoge.clone()
+	m := NewMapStatus()
 
-	spew.Dump(hoge)
-	// spew.Dump(clone)
+	fmt.Println("before:", m)
 
-	hoge.Right()
-	hoge.Down()
-	hoge.Right()
-	spew.Dump(hoge)
+	cmds = append(cmds, MoveParam(Right))
+	cmds = append(cmds, MoveParam(Down))
+	cmds = append(cmds, MoveParam(Right))
+
+	cmds = cmds[:len(cmds)-1]
+
+	for _, cmd := range cmds {
+		switch t := cmd.(type) {
+		case MoveParam:
+			m = t(*m)
+		}
+	}
+
+	fmt.Println("after:", m)
 }
