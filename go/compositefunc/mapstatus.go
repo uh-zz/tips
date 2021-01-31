@@ -10,6 +10,17 @@ type MapStatus struct {
 
 }
 
+// MoveFunc func(*MapStatus)型
+type MoveFunc func(*MapStatus)
+
+// Union 空レシーバ
+func (m MoveFunc) Union() {}
+
+// Command 抽象コマンド
+type Command interface {
+	Union()
+}
+
 // NewMapStatus 初期座標を設定
 func NewMapStatus() *MapStatus {
 	m := new(MapStatus)
@@ -27,12 +38,6 @@ func NewMapStatus() *MapStatus {
 	return m
 }
 
-// clone コピーの作成
-func (m *MapStatus) clone() *MapStatus {
-	copy := *m
-	return &copy
-}
-
 // move プレイヤーの移動
 func (m *MapStatus) move(x, y int) {
 
@@ -45,22 +50,12 @@ func (m *MapStatus) move(x, y int) {
 	}
 }
 
-type MoveParam func(MapStatus) *MapStatus
-
-func (m MoveParam) Union() string { return "hoge" }
-
-type Command interface {
-	Union() string
-}
-
 // Right 右へ進む
-func Right(m MapStatus) *MapStatus {
+func Right(m *MapStatus) {
 	m.move(1, 0)
-	return &m
 }
 
 // Down 下へ進む
-func Down(m MapStatus) *MapStatus {
+func Down(m *MapStatus) {
 	m.move(0, 1)
-	return &m
 }
