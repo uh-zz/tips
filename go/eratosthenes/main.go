@@ -49,7 +49,8 @@ func searchEratosthenes(seq []int) []int {
 		seq = search
 
 		// step3
-		if float64(seq[0]) >= math.Sqrt(float64(seq[len(seq)-1])) {
+		lastNumSqrt := int(math.Sqrt(float64(seq[len(seq)-1])))
+		if seq[0] >= lastNumSqrt {
 			// step4
 			shift = append(shift, seq...)
 			break
@@ -64,6 +65,6 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	prime := searchEratosthenes(seq)
-	fmt.Println(prime)
+	primes := searchEratosthenes(seq)
+	fmt.Println(primes)
 }
