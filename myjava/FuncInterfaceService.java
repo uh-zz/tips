@@ -2,6 +2,7 @@ package myjava;
 
 // package tips.java.function.interface;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class FuncInterfaceService {
     public static void main(String[] args) {
@@ -13,5 +14,15 @@ public class FuncInterfaceService {
 
         System.out.println(function.apply("123"));
 
+        // 引数Tを与えて、booleanの値を返す
+        // Predicate<T>
+        //
+        // predicateは「断定する」という意味
+        // 値の検証を明示する時に使われる
+        Predicate<String> emptyChecker = string -> string.isEmpty();
+
+        System.out.println(emptyChecker.test(""));
+
+        System.out.println(emptyChecker.test("fuga"));
     }
 }
