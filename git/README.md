@@ -31,3 +31,24 @@ git checkout main(好きなブランチ)
 ```
 git merge 80ae4af(sha1のハッシュ7文字)
 ```
+
+## 特定のフォルダーを履歴からも消す
+
+消す手順
+```
+git filter-branch --tree-filter "rm -f -r [消したいディレクトリパス] " HEAD
+git gc --aggressive --prune=now
+git push -f
+```
+
+よく起るエラー
+
+```
+A previous backup already exists in refs/original/
+Force overwriting the backup with -f
+``
+これが出たら
+
+```
+git update-ref -d refs/original/refs/heads/master
+```
