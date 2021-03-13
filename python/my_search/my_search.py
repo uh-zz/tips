@@ -10,7 +10,7 @@ T = TypeVar('T')
 def bit_search(
         input_list: List[T],
         evaluation_fn: Callable[[List[T]], float]) -> Tuple[List[T], float]:
-    """評価関数が最大値を取る組み合わせを探索する
+    """評価関数が最大値を取る組み合わせをBit全探索する
     
     ------------------
     Attribute
