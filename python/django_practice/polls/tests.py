@@ -2,7 +2,8 @@
 from django.test import TestCase
 from django.utils import timezone
 from django.urls import reverse
-
+from django.db import connection, reset_queries
+from django.conf import settings
 from .models import Question
 """
     Example: python manage.py test polls
@@ -39,6 +40,32 @@ class QuestionModelTests(TestCase):
         ) - timezone.timedelta(hours=23, minutes=59, seconds=59)
         recent_question = Question(pub_date=almost_one_month_ago_time)
         self.assertIs(recent_question.was_published_recently(), True)
+
+    def test_query_sets(self):
+        """django.db.connectionのテスト"""
+        # django.db.connection は
+        # DEBUG = True
+        # じゃないと使えない。
+        settings.DEBUG = True
+        # reset_queries()で履歴を消去
+        reset_queries()
+        for n in range(5):
+            now = timezone.now()
+            question = Question(pub_date=now,question_text="hoge")
+            question.save()
+        query_set = Question.objects.all()
+        sum_text = ""
+        for question in query_set:
+            sum_text += question.question_text
+        self.assertEqual(sum_text,"hoge"*5)
+
+        # connection.queries で発行されたSQLの履歴を見ることができる
+        # print(connection.queries)
+        
+        # 今回はINSERT5回に、SELECT一回なので
+        # connection.queries の数は6回
+        self.assertEqual(len(connection.queries),6)
+        settings.DEBUG = False
 
 
 def create_question(question_text, days):
