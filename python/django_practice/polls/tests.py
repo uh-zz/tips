@@ -41,7 +41,7 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=almost_one_month_ago_time)
         self.assertIs(recent_question.was_published_recently(), True)
 
-    def test_query_sets(self):
+    def test_db_connection(self):
         """django.db.connectionのテスト"""
         # django.db.connection は
         # DEBUG = True
