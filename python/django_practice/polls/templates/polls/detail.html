@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Django Proctice Polls Detail</title>
+  </head>
+  <body>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <h1>{{ question.question_text }}</h1>
+    <!-- フォームの action を {% url 'polls:vote' question.id %} に設定し、 
+      さらに method="post" を設定します。
+      (method="get" ではなく) method="post" を使用することは非常に重要です。
+      なぜなら、フォームの送信はサーバ側のデータの更新につながるからです。
+      サーバ側のデータを更新するフォームを作成する場合は、
+      method="post" を使いましょう。
+      これは、 Django 固有のものではなく、いわばウェブ開発の王道です。 -->
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+      <!-- (データを改ざんされる恐れのある) POST フォームを作成しているので、
+        クロスサイトリクエストフォージェリを気にする必要があります。
+        ありがたいことに、
+        Django がこれに対応するとても使いやすい仕組みを提供してくれているので、
+        あまり心配する必要はありません。
+        手短に言うと、自サイト内を URL に指定した POST フォームには全て、 
+        {% csrf_token %} テンプレートタグを使うべきです。 -->
+      {% csrf_token %}
+      {% for choice in question.choice_set.all %}
+        <!-- forloop.counter は、 for タグのループが何度実行されたかを表す値です。 -->
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <!-- 上のテンプレートは、各質問の選択肢のラジオボタンが表示するものです。
+          各ラジオボタンの value は、関連する質問の選択肢のIDです。
+          各ラジオボタンの name は "choice" です。
+          つまり、投票者がラジオボタンの1つを選択し、
+          フォームを送信すると、
+          POSTデータ choice=# （＃は選んだ選択肢のID）が送信されます。 -->
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+      {% endfor %}
+      <input type="submit" value="Vote">
+    </form>
+  </body>
+</html>

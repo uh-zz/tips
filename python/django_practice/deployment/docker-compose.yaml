@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  django_db:
+    container_name: django_db
+    build:
+      context: ../build/db
+      dockerfile: ./Dockerfile
+    # image: postgres
+    restart: always
+    ports: 
+      # 業務でよく使うポートなので5432は使わない
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: django_user
+      POSTGRES_DB: django_db_name
+      POSTGRES_PASSWORD: django_password
+      TZ: Asia/Tokyo
+    volumes: 
+      - django_dbdata:/var/lib/postgresql/data
+
+  django_app:
+    container_name: django_app
+    build:
+      context: ../
+      dockerfile: ./build/django/Dockerfile
+    deploy:  
+      resources:
+        limits: 
+          memory: 1g
+    tty: true
+    volumes:
+      - ..:/django_practice
+    ports:
+      # 業務でよく使うポートなので127.0.0.1:8001は使わない
+      - "127.0.0.1:8001:8000"
+    depends_on:
+      - django_db
+    # command: python3 manage.py runserver 0.0.0.0:8000
+  
+
+volumes:
+  django_dbdata:
