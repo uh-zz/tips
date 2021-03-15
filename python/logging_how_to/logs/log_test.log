@@ -1,0 +1,190 @@
+[2021-03-16 02:23:46,140] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:23:46,140] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:23:46,141] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:23:46,141] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:23:46,151] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:23:46,151] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:24:47,019] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:24:47,019] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:24:47,023] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:24:47,023] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:24:47,024] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:24:47,024] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:24:47,032] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:24:47,032] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:24:58,057] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:24:58,057] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:24:58,058] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:24:58,058] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:24:58,069] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:24:58,069] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:24:58,079] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:24:58,079] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:25:36,757] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:25:36,757] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:25:36,758] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:25:36,758] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:25:36,766] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:25:36,766] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:25:36,775] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:25:36,775] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:25:57,151] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:25:57,151] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:25:57,152] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:25:57,152] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:25:57,159] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:25:57,159] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:25:57,164] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:25:57,164] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:26:33,296] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:26:33,296] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:26:33,297] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:26:33,297] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:26:59,509] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:26:59,509] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:26:59,510] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:26:59,510] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:26:59,510] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:26:59,510] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:26:59,510] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:26:59,510] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:28:40,489] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:28:40,489] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:28:40,490] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:28:40,490] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:28:40,490] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:28:40,490] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:28:40,490] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:28:40,490] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:28:43,817] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:28:43,817] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:28:43,817] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:28:43,817] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:28:43,817] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:28:43,817] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:28:43,818] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:28:43,818] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:29:02,085] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:29:02,085] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:29:02,085] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:29:02,085] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:29:02,086] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:29:02,086] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:29:02,087] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:29:02,087] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:29:19,892] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:29:19,892] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:29:19,892] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:29:19,899] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:29:22,243] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:29:22,244] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:29:22,244] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:29:22,247] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:30:16,944] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:30:16,945] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:30:16,945] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:30:16,945] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:31:35,299] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:31:35,302] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:31:35,305] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:31:35,311] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
+[2021-03-16 02:37:18,205] INFO: my_logging.py:10 simple_logging   LOGGER NAME is logging_how_to.my_logging
+[2021-03-16 02:37:18,206] WARNING: my_logging.py:11 simple_logging   NOTHING IS WARNING
+[2021-03-16 02:37:18,206] ERROR: my_logging.py:15 simple_logging   This is a sample exception!
+Traceback (most recent call last):
+  File "/Users/nakz/tips/python/logging_how_to/my_logging.py", line 13, in simple_logging
+    raise Exception("This is a sample exception!")
+Exception: This is a sample exception!
+[2021-03-16 02:37:18,210] INFO: my_logging.py:16 simple_logging   ERROR WAS IGNORED!
