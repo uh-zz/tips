@@ -30,6 +30,7 @@ logging.error() or logging.exception() or logging.critical():
 デフォルトのレベルは WARNING で、
 logging パッケージが他に設定されなければ、このレベル以上のイベントのみ追跡されます。
 
+DEBUG: おもに問題を診断するときにのみ関心があるような、詳細な情報。
 INFO: 想定された通りのことが起こったことの確認。
 WARNING: 想定外のことが起こった、または問題が近く起こりそうである 
         (例えば、'disk space low') ことの表示。
