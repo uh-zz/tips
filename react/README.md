@@ -14,3 +14,11 @@ nvm use 14.16(your installed version)
 ```
 npx create-react-app my-app --template typescript
 ```
+
+# Propsのフィールドの名付け方
+
+どの文脈で使われるのかより、そのコンポーネント固有の観点から名前をつけた方がいい。
+
+# PropsはImmutable
+
+React Component はPropsに対して純粋な関数として振舞わないといけない。
