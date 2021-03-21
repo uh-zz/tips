@@ -1,0 +1,140 @@
+swagger: '2.0'
+info:
+  contact:
+    email: example@gmail.com
+  description: |-
+    Reactの練習用にTODOアプリをREACTとGoで作ってみる。
+    バックエンドにこだわりはないので後で置き換える可能性は高い。
+  version: 1.0.0
+  title: TODO REACT
+host: 'localhost:8080'
+tags:
+  - name: user
+    description: ユーザ関連API
+  - name: todo
+    description: TODOリスト関連API
+schemes:
+  - http
+paths:
+  /user/create:
+    post:
+      operationId: create
+      tags:
+        - user
+      summary: ユーザ情報作成API
+      description: |-
+        ユーザ情報を作成します。
+         ユーザの名前情報をリクエストで受け取り、ユーザIDと認証用のトークンを生成しデータベースへ保存します。
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/UserCreateRequest'
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/UserCreateResponse'
+          examples:
+            example:
+              name: string
+              token: string
+  /user/get:
+    get:
+      tags:
+        - user
+      summary: ユーザ情報取得API
+      description: |-
+        ユーザ情報を取得します。
+         ユーザの認証と特定の処理はリクエストヘッダのx-tokenを読み取ってデータベースに照会をします。
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: x-token
+          description: 認証トークン
+          required: true
+          type: string
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/UserGetResponse'
+      operationId: get
+  /user/update:
+    put:
+      operationId: update
+      tags:
+        - user
+      summary: ユーザ情報更新API
+      description: |-
+        ユーザ情報の更新をします。
+         初期実装では名前の更新を行います。
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: x-token
+          description: 認証トークン
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Request Body
+          required: true
+          schema:
+            $ref: '#/definitions/UserUpdateRequest'
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/UserUpdateResponse'
+
+definitions:
+  UserCreateRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        description: ユーザ名
+  UserCreateResponse:
+    type: object
+    properties:
+      name:
+        type: string
+        description: ユーザ名
+      token:
+        type: string
+        description: クライアント側で保存するトークン
+  UserGetResponse:
+    type: object
+    properties:
+      name:
+        type: string
+        description: ユーザ名
+      token:
+        type: string
+        description: クライアント側で保存するトークン
+  UserUpdateRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        description: ユーザ名
+  UserUpdateResponse:
+    type: object
+    properties:
+      name:
+        type: string
+        description: ユーザ名
+      token:
+        type: string
+        description: クライアント側で保存するトークン
