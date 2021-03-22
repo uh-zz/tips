@@ -19,10 +19,10 @@ export class ListedTodo extends React.Component<ListedTodoProps> {
         
         return(
             <div className="float-box">
-                <form onClick={this.onClick}>
+                <form className="Button-box" onClick={this.onClick}>
                     <input className="DeleteButton" type="button" value="" />
                 </form>
-                <div>
+                <div className="todo-box">
                     <h1>{this.props.todo.event}</h1>
                     <h4>Deadline: {deadline_text}</h4>
                 </div>
