@@ -1,0 +1,93 @@
+.App-logo {
+/* height: 40vmin; */
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+.App-logo {
+    flex: 10;
+    animation: App-logo-spin 0.3s linear;
+    animation-fill-mode:forwards;
+}
+}
+
+.Header {
+    background-color: #29b2d4;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-style: italic;
+    color: black;
+}
+.Header button{
+    position: fixed;
+    top: 10px;
+    left:10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+}
+.Header span{
+    bottom: 8px;
+    background-color: #ffffff;
+    height: 8px;
+}
+
+
+@keyframes App-logo-spin {
+    from {
+        transform:translateX(-130%);
+    }
+    to {
+        transform: translateX(-5%);
+    }
+}
+.menu{
+    flex: 1;
+    padding: 10px;
+}
+
+  
+.ham {
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+  
+.ham span,
+.ham span:before,
+.ham span:after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 40px;
+    border-radius: 3px;
+    background: #333;
+    transition: 0.5s;
+    position: absolute;
+    margin: 2px 0px;
+}
+
+.ham span:before {
+    bottom: 8px;
+}
+
+.ham span:after {
+    top: 8px;
+}
+.menu p{
+    width: 40px;
+    font-family: Arial;
+    font-size: 15px;
+    padding:0%;
+    margin-top: 0px;
+}

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	control.Run()
+	control.Exec()
 }

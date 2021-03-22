@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: todo_db
       MYSQL_USER: todo_user
       MYSQL_PASSWORD: todo_password
-      MYSQL_HOST: todo_host
+      # MYSQL_HOST: todo_host
       TZ: 'Asia/Tokyo'
     volumes:
       - todo-db:/var/lib/mysql
