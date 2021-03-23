@@ -8,6 +8,13 @@
     flex: 10;
     animation: App-logo-spin 0.3s linear;
     animation-fill-mode:forwards;
+    color: #fff;
+    font-weight: bold;
+    /* shadowは重ね掛けすることもできる */
+    text-shadow: 
+    -10px 2px 5px rgb(109, 25, 25),
+    -20px 2px 5px rgb(0, 255, 85),
+    -30px 2px 5px rgb(25, 0, 255);
 }
 }
 

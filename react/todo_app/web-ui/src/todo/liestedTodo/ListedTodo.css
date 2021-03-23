@@ -1,45 +1,47 @@
-.float-box{
+.listed{
     display: flex;
-    justify-content: center;
-    width: 700px;
+    /* display: inline-flex; */
+    /* flex box 内での位置を決める詳しくはこちら
+    https://developer.mozilla.org/ja/docs/Web/CSS/justify-content */
+    justify-content: left;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
-.todo-box{
-    justify-content: center;
+
+.listed-todo{
     font-family: sans-serif;
     color:rgb(7, 0, 14);
     border: 8px #29b2d4 solid;
-    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
     width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 20px;
+    
+    /* x方向の 左上 右上 右下 左下 /  y方向の 左上 右上 右下 左下 */
+    border-radius: 40px 70px 100px 150px / 140px 30px 100px 20px;
+    /* x方向の距離 y方向の距離 ぼかしの距離 影の色 */
+    box-shadow: 50px 100px 80px #014270;
 }
 
 
-h1{
+.listed-todo-event{
     font-size: 45px;
 }
-form{
 
-    margin-left: 0px;
-    margin-right: 50px;
-}
-.DeleteButton{
+.listed-check-button{
     margin-top: 70px;
-    margin-right: 0px;
     width:50px;
     height:50px;
     background:#fff;
     border: 5px #017014 solid;
-    border-radius:100%;
+    /* boarder-radiusに50%を指定すると丸になる */
+    border-radius:50%;
+    /* box-shadow の内側にinsetをつけると内向きになる */
+    box-shadow: inset 0px 0px 10px #014270;
 }
-.DeleteButton:hover{
+.listed-check-button:hover{
     width:50px;
     height:50px;
     background:rgb(28, 150, 44);
     border: 5px #003108 solid;
-    border-radius:100%;
 }
