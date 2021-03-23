@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -48,7 +49,7 @@ func Exec() error {
 	// routerの設定
 	r := gin.Default()
 	// 静的ファイルのServe
-	r.Static("/web", "../web-ui/build")
+	r.Use(static.Serve("/", static.LocalFile("../web-ui/build", true)))
 
 	r.GET("/todo/all", func(c *gin.Context) {
 		todos := &models.Todos{}
@@ -105,7 +106,7 @@ func Exec() error {
 
 	})
 
-	err = r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	err = r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 	if err != nil {
 		return err
 	}
