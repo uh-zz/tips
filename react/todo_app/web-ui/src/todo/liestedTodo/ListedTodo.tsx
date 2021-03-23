@@ -19,9 +19,7 @@ export class ListedTodo extends React.Component<ListedTodoProps> {
         
         return(
             <div className="listed">
-                <form className="listed-check" onClick={this.onClick}>
-                    <input className="listed-check-button" type="button" value="" />
-                </form>
+                <a className="listed-check-button" onClick={this.onClick}></a>
                 <div className="listed-todo">
                     <h1 className="listed-todo-event">{this.props.todo.event}</h1>
                     <h4>Deadline: {deadline_text}</h4>

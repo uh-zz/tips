@@ -27,7 +27,9 @@
 .listed-todo-event{
     font-size: 45px;
 }
-
+.listed a{
+    cursor: pointer;
+}
 .listed-check-button{
     margin-top: 70px;
     width:50px;
@@ -38,10 +40,18 @@
     border-radius:50%;
     /* box-shadow の内側にinsetをつけると内向きになる */
     box-shadow: inset 0px 0px 10px #014270;
+    cursor: zoomin;
 }
+
 .listed-check-button:hover{
-    width:50px;
-    height:50px;
-    background:rgb(28, 150, 44);
-    border: 5px #003108 solid;
+    background-color: transparent;
+    border-color: #fd0404;
+    border-style: solid;
+    border-radius: 0;
+    box-shadow: none;
+    border-width: 0 12px 11px 0;
+    height: 70px;
+    width: 40px;
+    margin-top: 50px;
+    transform: rotate(45deg);
 }

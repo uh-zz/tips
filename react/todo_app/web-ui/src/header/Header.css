@@ -17,6 +17,14 @@
     -30px 2px 5px rgb(25, 0, 255);
 }
 }
+@keyframes App-logo-spin {
+    from {
+        transform:translateX(-130%);
+    }
+    to {
+        transform: translateX(-5%);
+    }
+}
 
 .Header {
     background-color: #29b2d4;
@@ -29,50 +37,60 @@
     font-style: italic;
     color: black;
 }
-.Header button{
-    position: fixed;
-    top: 10px;
-    left:10px;
-    display: flex;
-    height: 60px;
-    width: 60px;
-    border: none;
-    justify-content: center;
-    align-items: center;
+
+
+/* ハンバーガーメニューのCSS */
+.header-menu{
+    width: 100px;
+    height: 100px;
     background-color: inherit;
+    display: block;
+    box-sizing: border-box;
+    border: none;
 }
-.Header span{
-    bottom: 8px;
-    background-color: #ffffff;
-    height: 8px;
+
+.header-menu-line{
+    width: 50px;
+    height: 2px;
+    content: '';
+    border-bottom: 3px rgb(245, 2, 2) solid;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.header-menu div:nth-of-type(1){
+    top: 6px;
+}
+.header-menu:nth-of-type(2){
+    top: 16px;
+}
+.header-menu:nth-of-type(3){
+    top: 6px;
 }
 
 
-@keyframes App-logo-spin {
-    from {
-        transform:translateX(-130%);
-    }
-    to {
-        transform: translateX(-5%);
-    }
-}
-.menu{
+
+/* .menu{
+    appearance: none;
     flex: 1;
     padding: 10px;
+    border: none;
 }
 
-  
-.ham {
+.menu[disabled]{
+    cursor: default;
+}
+
+.menu-ham {
+    cursor: pointer;
     width: 25px;
     height: 25px;
     display: block;
     position: relative;
-    cursor: pointer;
 }
   
-.ham span,
-.ham span:before,
-.ham span:after {
+.menu-ham span,
+.menu-ham span:before,
+.menu-ham span:after {
     content: '';
     display: block;
     height: 4px;
@@ -84,11 +102,11 @@
     margin: 2px 0px;
 }
 
-.ham span:before {
+.menu-ham span:before {
     bottom: 8px;
 }
 
-.ham span:after {
+.menu-ham span:after {
     top: 8px;
 }
 .menu p{
@@ -97,4 +115,5 @@
     font-size: 15px;
     padding:0%;
     margin-top: 0px;
-}
+    cursor: pointer;
+} */
