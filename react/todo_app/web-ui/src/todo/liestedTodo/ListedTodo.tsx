@@ -18,12 +18,12 @@ export class ListedTodo extends React.Component<ListedTodoProps> {
         deadline_text = deadline_text.split("+")[0]
         
         return(
-            <div className="float-box">
-                <form className="Button-box" onClick={this.onClick}>
-                    <input className="DeleteButton" type="button" value="" />
+            <div className="listed">
+                <form className="listed-check" onClick={this.onClick}>
+                    <input className="listed-check-button" type="button" value="" />
                 </form>
-                <div className="todo-box">
-                    <h1>{this.props.todo.event}</h1>
+                <div className="listed-todo">
+                    <h1 className="listed-todo-event">{this.props.todo.event}</h1>
                     <h4>Deadline: {deadline_text}</h4>
                 </div>
             </div>

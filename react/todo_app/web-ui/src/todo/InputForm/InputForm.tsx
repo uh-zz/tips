@@ -28,7 +28,7 @@ export class InputForm extends React.Component<InputFormProps,InputFormState>{
         let submitButton = (this.state.todo.deadline && this.state.todo.event )? 
         existBottun : undefined
         return(
-            <div className="InputForm">
+            <div className="input_form">
                 <form onSubmit={this.createItem}>
                     <h1 className="Todo">What's you have to do?</h1>
                     <textarea 

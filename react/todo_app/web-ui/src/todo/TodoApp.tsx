@@ -144,7 +144,7 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
                 {/* <form onSubmit={this.allDelete}>
                     <input type="button" value="Delete All" />
                 </form> */}
-                <h1 className="YourToDoList">Your ToDo List</h1>
+                <h1 className="todo-list-header">Your ToDo List</h1>
                 {listItems}
             </div>
         )
