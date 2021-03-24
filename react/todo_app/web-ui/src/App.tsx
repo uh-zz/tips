@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {TodoApp} from './todo/TodoApp'
 import {Header} from './header/Header'
+import Clock from './Clock'
 import {Footer} from './footer/Footer'
 
 function App() {
@@ -10,9 +10,10 @@ function App() {
     <div className="App">
       
         
-      <Header/>
-      <TodoApp/>
-      <Footer/>
+      <Header />
+      <Clock />
+      <TodoApp />
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -23,14 +23,14 @@ export class InputForm extends React.Component<InputFormProps,InputFormState>{
     }
     render(){
         let existBottun = (
-            <input className="Submit" type="submit" value="Create" /> 
+            <input className="input-form-submit" type="submit" value="Create" /> 
         )
         let submitButton = (this.state.todo.deadline && this.state.todo.event )? 
         existBottun : undefined
         return(
-            <div className="input_form">
+            <div className="input-form">
                 <form onSubmit={this.createItem}>
-                    <h1 className="Todo">What's you have to do?</h1>
+                    <h1>What's you have to do?</h1>
                     <textarea 
                     name="event" 
                     value={this.state.todo.event} 
@@ -39,7 +39,7 @@ export class InputForm extends React.Component<InputFormProps,InputFormState>{
                         deadline:this.state.todo.deadline
                     }})}
                     />
-                    <div className="Deadline">
+                    <div className="input-form-deadline">
                         <h2>Deadline:</h2>
                         <input 
                         type="datetime-local" 
@@ -54,9 +54,7 @@ export class InputForm extends React.Component<InputFormProps,InputFormState>{
                         }}
                         ></input>
                     </div>
-                    <div className="SubmitDiv">
-                        {submitButton}
-                    </div>
+                    {submitButton}
                 </form>
             </div>
         )

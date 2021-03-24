@@ -139,13 +139,17 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
             <ListedTodo key={todo.id} todo={todo} deleteItem={this.deleteItem} />
         )
         return(
-            <div className="TodoApp">
-                <InputForm createItem={this.createItem}/>
+            <div className="TodoApp" style={{display:"flex",alignItems:"center",justifyContent:"space-between",margin:0,padding:0}}>
+                <div style={{flex:1,marginBottom:"auto",marginRight:"5%"}}>
+                    <InputForm createItem={this.createItem} />
+                </div>
                 {/* <form onSubmit={this.allDelete}>
                     <input type="button" value="Delete All" />
                 </form> */}
-                <h1 className="todo-list-header">Your ToDo List</h1>
-                {listItems}
+                <div style={{flex:1,marginBottom:"auto"}}>
+                    <h1 className="todo-list-header">Your ToDo List</h1>
+                    {listItems}
+                </div>
             </div>
         )
     }

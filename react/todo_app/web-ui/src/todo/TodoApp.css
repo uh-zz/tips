@@ -15,7 +15,7 @@
     width: 200px;
     border-radius: 100px 100px 0 0 ;
 }
-.todo-list-header::before,
+/* .todo-list-header::before,
 .todo-list-header::after{
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
     box-sizing: border-box;
@@ -37,4 +37,4 @@
 
 .todo-list-header:hover{
     opacity: 0.6;
-}
+} */

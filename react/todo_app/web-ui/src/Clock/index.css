@@ -1,0 +1,90 @@
+.Clock{
+    width: 470px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+
+    border: 5px solid #29b2d4;
+    background-color: rgb(233, 233, 233);
+    border-radius: 45px 50px 0 0 ;
+}
+.ClockMessage{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ClockMessage h1{
+    font-size: 24px;
+    font-family: Helvetica, Arial, sans-serif;;
+    text-align: left;
+}
+.ClockWindow{
+    height: 90px;
+    border: 2px solid #29b2d4;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 
+    普通に文字列を入れると
+    1と0ではサイズがことなるので
+    時刻が変わると:の位置がずれてしまうので、
+    そうならないよう数字は1文字ずつh1要素にしてある。 
+*/
+.ClockWindowStrings{
+    display:flex;
+    height: inherit;
+}
+.ClockWindowStrings h1{
+    font-family: Helvetica , Arial, sans-serif;
+    font-size: 70px;
+    text-align: center;
+    margin: 0;
+}
+.ClockButtonWrapper{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.ClockButtonWrapper button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    cursor: pointer;
+    outline: none
+}
+
+.ClockButtonStart{
+    background-color: rgb(43, 196, 43);
+    border: 3px solid rgb(3, 119, 3);
+}
+.ClockButtonStart:hover{
+    background-color: rgb(31, 148, 31);
+    border: 3px solid rgb(0, 99, 0);
+}
+.ClockButtonStart:active{
+    opacity: 0.6;
+}
+
+.ClockButtonStop{
+    background-color: rgb(209, 51, 51);
+    border: 3px solid rgb(117, 14, 14);
+}
+.ClockButtonStop:hover{
+    background-color: rgb(172, 43, 43);
+    border: 3px solid rgb(97, 8, 8);
+}
+.ClockButtonStop:active{
+    opacity: 0.6;
+}
+
