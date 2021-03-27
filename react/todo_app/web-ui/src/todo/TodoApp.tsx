@@ -21,8 +21,8 @@ type TodoAppState = {
 
 export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
 
+    
     subsc?:Subscription
-
     constructor(props:TodoAppProps){
         super(props)
         this.state = {
@@ -70,11 +70,14 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
                 'Content-Type': 'application/json',
             },
             body: todo
-        }).pipe(
+        }
+    ).pipe(
             map(response => {
                 // ここ汚いから上手くやって欲しい
-                let todos = response.response as any as Todo
-                return todos
+                let result = response.response as any
+                let new_todo = new Todo()
+                Object.assign(new_todo,result)
+                return new_todo
             })
         )
 
@@ -132,21 +135,20 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
             }
         })
     }
-    
 
     render(){
         const listItems = this.state.todos.map((todo) =>
             <ListedTodo key={todo.id} todo={todo} deleteItem={this.deleteItem} />
         )
         return(
-            <div className="TodoApp" style={{display:"flex",alignItems:"center",justifyContent:"space-between",margin:0,padding:0}}>
-                <div style={{flex:1,marginBottom:"auto",marginRight:"5%"}}>
+            <div className="TodoApp" style={{display:"flex",alignItems:"center",justifyContent:"center",margin:0,padding:0,flexWrap:"wrap"}}>
+                <div style={{flex:1,marginBottom:"auto",marginRight:"5%",minWidth:470,maxWidth:700}}>
                     <InputForm createItem={this.createItem} />
                 </div>
                 {/* <form onSubmit={this.allDelete}>
                     <input type="button" value="Delete All" />
                 </form> */}
-                <div style={{flex:1,marginBottom:"auto"}}>
+                <div style={{flex:1,marginBottom:"auto",minWidth:470,maxWidth:470}}>
                     <h1 className="todo-list-header">Your ToDo List</h1>
                     {listItems}
                 </div>

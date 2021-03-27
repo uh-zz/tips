@@ -53,15 +53,16 @@
     width: 100%;
 }
 
-.ClockButtonWrapper button{
+.ClockButtonStart,
+.ClockButtonStop{
     width: 70px;
     height: 70px;
     border-radius: 50%;
     font-size: 20px;
     font-weight: bolder;
     font-style: italic;
+    outline: none;
     cursor: pointer;
-    outline: none
 }
 
 .ClockButtonStart{

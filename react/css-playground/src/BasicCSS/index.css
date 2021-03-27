@@ -1,0 +1,200 @@
+@charset "utf-8";
+
+.basic-header{
+    height: 160px;
+    background-color: pink;
+    background-image: url(./img/logo.png);
+    background-size: cover;
+    background-position: center;
+    background: center/cover pink url(./img/logo.png);
+}
+
+.BasicCSS img{
+    float: right;
+}
+.BasicCSS p{
+    clear: right;
+    clear:both
+}
+
+.BasicCSS{
+    /* color: skyblue; */
+    /* border: 1px pink solid; */
+}
+/* セレクター */
+/* .BasicCSS h1{ */
+    /* 宣言 */
+    /* プロパティ, 値 */
+    /* color:skyblue; */
+    /* 同じプロパティを指定したらあとから
+    書いた方が有効 */
+    /* color: red; */
+    /* font-size: 48px; */
+    /* 親要素のプロパティの値を継承したい時は
+    inheritを使う */
+    /* border: inherit; */
+    
+    /* font-weight: normal; */
+
+    /* 文字の中央寄せ */
+    /* text-align: center; */
+    /* 打ち消し線 */
+    /* text-decoration: line-through; */
+
+    /* フォントの設定 */
+    /* font-family: Verdana,'Arial Black', メイリオ , sans-self ; */
+
+/* } */
+
+/* .BasicCSS p{ */
+    /* font-weight: bold; */
+    /* 下線 */
+    /* text-decoration: underline; */
+
+    /* font-size: 16px; */
+    /* line-height: 48px; */
+    /* emを使うと3文字分として設定することもできる */
+    /* line-height: 3em; */
+    /* background-color: pink; */
+/* } */
+
+/* .BasicCSS a{ */
+    /* 下線の打ち消し */
+    /* text-decoration: none; */
+/* } */
+
+/* .BasicCSS main{ */
+    /* font-size: 32px; */
+    /* line-height: 2em; */
+    /* 単位なしにすると自動で継承先でも再度計算される */
+    /* line-height: 2; */
+/* } */
+
+/* .BasicCSS section{ */
+    /* font-size:16px; */
+/* } */
+
+.basic1{
+    color: rgba(255,0,0,0.5);
+    /* red green blue 透明度255段階 */
+    color: #ff00009f;
+    /* HSLA Hue Saturation Lightness Alpha */
+    color:  hsl(180, 80%, 40%, 50%);
+}
+
+.basic2{
+    color: #ff0000;
+    background-color: aqua;
+    opacity: 0.6;
+}
+
+.basic3 ul{
+    list-style-type: circle;
+    list-style-position: inside;
+    list-style-image: url(../logo.svg);
+}
+.basic3 ol{
+    list-style-type: lower-alpha;
+    /* 上のlower-alphaが消えてしまっている。
+    下の項目で指定していないから初期値が上書きされたからだよ。 */
+    list-style: inside;
+}
+
+.basic4 {
+    background-color: orange;
+    width: 200px;
+    height: 200px;
+    /* 上 左右 下 */
+    /* margin: 0 0 20px; */
+    /* 要素を中心に配置する時はよくこれを使う */
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-bottom:20px;
+}
+.basic5 {
+    background-color: skyblue;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+    overflow: scroll;
+    /* border-top: 2px solid blue; */
+    /* border-bottom: 2px solid blue; */
+    /* border: 2px solid blue; */
+    /* border-bottom:none ; */
+    /* border-radius: 10px; */
+    /* border: 2px dashed blue; */
+    border: 2px solid blue;
+    padding-top: 20px;
+    padding-left: 240px;
+    /* 上から時計回り */
+    padding: 10px 20px 30px 40px;
+    /* 上下　左右 */
+    padding: 10px 200px;
+}
+.basic6 {
+    background-color: tomato;
+    width: 200px;
+    height: 200px;
+}
+.basic7{
+    margin-top: 10px;
+}
+
+.basic8{
+    background-color: tomato;
+    width: 100px;
+    height: 40px;
+    /* inlineだとサイズの変更が向こうになる */
+    /* display: inline; */
+    display: inline-block;
+    /* 要素を消したい時はnone */
+    /* display: none; */
+}
+
+.basic9{
+    background-color: orange;
+    width: 100px;
+    height: 100px;
+    /* position: static; */
+    /* position: absolute; */
+    /* top:0; */
+    /* left: 0; */
+    /* z-index: 3; */
+    width: calc( (100% - 40px) / 3 ) ;
+}
+.basic10{
+    background-color: skyblue;
+    width: 100px;
+    height: 100px;
+    /* position: relative; */
+    /* position: fixed; */
+    /* position: static; */
+    /* top: 30px; */
+    /* left: 30px; */
+    /* position: absolute; */
+    /* z-index: 2; */
+    /* ボーダーも含めて大きさを計算する */
+    /* border: 10px solid blue; */
+    /* box-sizing: border-box; */
+    margin: 0 auto;
+    width: calc( (100% - 40px) / 3 ) ;
+}
+/* .rect{
+    width: 50px;
+    height: 20px;
+    background-color: lime;
+    top: -5px;
+    right: -5px;
+    position: absolute;
+} */
+.basic11{
+    background-color: tomato;
+    width: 100px;
+    height: 100px;
+    /* top: 60px; */
+    /* left: 60px; */
+    /* position: absolute; */
+    /* z-index: 1; */
+    margin-left: auto;
+    width: calc( (100% - 40px) / 3 ) ;
+}

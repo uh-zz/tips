@@ -11,8 +11,10 @@ function App() {
       
         
       <Header />
-      <Clock />
-      <TodoApp />
+      <div style={{paddingTop:120}}>
+        <Clock />
+        <TodoApp />
+      </div>
       {/* <Footer/> */}
     </div>
   );

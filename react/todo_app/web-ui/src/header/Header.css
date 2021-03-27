@@ -27,7 +27,11 @@
 }
 
 .Header {
-    background-color: #29b2d4;
+    background-color: #fff;
+    background-size: cover;
+    position: fixed;
+    top:0px;
+    z-index: 999;
     display: flex;
     width: 100%;
     height: 120px;
