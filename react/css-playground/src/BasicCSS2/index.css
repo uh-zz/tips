@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+.BasicCSS2{
+    /* color: skyblue; */
+    /* border: 1px pink solid; */
+}
+
+.info{
+    color: skyblue;
+}
+
+.title{
+    font-weight: normal;
+}
+.info ,.title{
+    font-size: 70px;
+}
+.info.title{
+    font-style: italic;
+}
+
+#title{
+    color: pink;
+}
+
+/* 全称セレクター */
+/* *{
+    font-size: 12px;
+} */
+
+[href]{
+    font-weight: bold;
+    color: red;
+}
+
+[href="#top"]{
+    color: blue;
+}
+
+[href^="http"]{
+    background-color: aquamarine;
+}
+[href$="top"]{
+    background-color: cornflowerblue;
+}
+[href*="op"]{
+    font-size: 45px;
+}
+
+.BasicCSS2 .info::before,
+.BasicCSS2 .info::after{
+    /* カスタムデータ属性の使い方 */
+    content: attr(data-title);
+}
+
+.BasicCSS2 .btn{
+    width: 100px;
+    background-color: skyblue;
+    text-align: center;
+    padding: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+/* .basic-main > :nth-child(3){
+    background-color: pink;
+} */
+.basic-main > :nth-child(3n){
+    background-color: pink;
+}
+.basic-main > :nth-child(odd){
+    background-color: skyblue;
+}
+.basic-main > :first-child{
+    background-color: lemonchiffon;
+}
+.basic-main > :last-child{
+    background-color: yellowgreen;
+}
+
+.basic-main2 > h2:nth-of-type(3){
+    background-color: aqua;
+}
+.basic-main2 > h2:nth-of-type(odd){
+    background-color: aqua;
+}
+.basic-main2 > h2:last-of-type{
+    background-color: hotpink;
+}
+
+
+.empty li:empty{
+    background-color: skyblue;
+}
+.empty li:not(:empty){
+    background-color: red;
+}
