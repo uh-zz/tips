@@ -3,6 +3,7 @@ package control
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
@@ -40,7 +41,7 @@ func Exec() error {
 		fmt.Println(err)
 		return err
 	}
-	err = db.AutoMigrate(&models.Todo{})
+	err = db.AutoMigrate(&models.Todo{}, &models.Duration{})
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -104,6 +105,70 @@ func Exec() error {
 		todos.All(db)
 		c.JSON(http.StatusOK, todos)
 
+	})
+	r.DELETE("/clock/delete", func(c *gin.Context) {
+		duration := models.ConstructDuration(db)
+		err = c.BindJSON(&duration)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		err = duration.Delete()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		durations := &models.Durations{}
+		durations.FetchAllToday(db)
+		c.JSON(http.StatusOK, durations)
+
+	})
+
+	r.GET("/clock/durations", func(c *gin.Context) {
+		res := &models.Durations{}
+		// res.All(db)
+		res.FetchAllToday(db)
+		c.JSON(http.StatusOK, res)
+	})
+	r.POST("/clock/stop", func(c *gin.Context) {
+		// やはり、Context周りの詳細が増えていってしまうの良くないので
+		// modelのフィールドにしたほうがスッキリするのでは？
+		duration := models.ConstructDuration(db)
+		err = c.BindJSON(&duration)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		duration.Start = duration.Start.Local()
+		duration.End = duration.End.Local()
+		// ここにめっちゃモデル側の詳細を書いてるの良くないから直した方がいい。
+		var durations []*models.Duration
+		start := duration.Start
+		tommorow_midnight := time.Date(start.Year(), start.Month(), start.Local().Day()+1, 0, 0, 0, 0, time.Local)
+		if duration.End.After(tommorow_midnight) {
+			lastday_duration := &models.Duration{DB: db, Start: duration.Start, End: tommorow_midnight}
+			nextday_duration := &models.Duration{DB: db, Start: tommorow_midnight, End: duration.End}
+			durations = append(durations, lastday_duration, nextday_duration)
+		} else {
+			durations = append(durations, duration)
+		}
+		for _, v := range durations {
+			err = v.Create()
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			fmt.Printf("%+v\n", v)
+		}
+
+		resp_durations := models.Durations{}
+		err = resp_durations.FetchAllToday(db)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		c.JSON(http.StatusOK, resp_durations)
 	})
 
 	err = r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")

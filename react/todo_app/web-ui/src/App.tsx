@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import {TodoApp} from './todo/TodoApp'
-import {Header} from './header/Header'
+import Header from './Header'
 import Clock from './Clock'
-import {Footer} from './footer/Footer'
+import Footer from './Footer'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Clock />
         <TodoApp />
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

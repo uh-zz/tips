@@ -6,18 +6,15 @@
 @media (prefers-reduced-motion: no-preference) {
 .App-logo {
     flex: 10;
-    animation: App-logo-spin 0.3s linear;
+    animation: App-logo-move 0.3s linear;
     animation-fill-mode:forwards;
-    color: #fff;
+    color: #000;
     font-weight: bold;
     /* shadowは重ね掛けすることもできる */
-    text-shadow: 
-    -10px 2px 5px rgb(109, 25, 25),
-    -20px 2px 5px rgb(0, 255, 85),
-    -30px 2px 5px rgb(25, 0, 255);
+    text-shadow: 0px 2px 2px rgb(68, 68, 68);
 }
 }
-@keyframes App-logo-spin {
+@keyframes App-logo-move {
     from {
         transform:translateX(-130%);
     }
@@ -38,7 +35,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    font-style: italic;
+    /* font-style: italic; */
     color: black;
 }
 
@@ -57,7 +54,7 @@
     width: 50px;
     height: 2px;
     content: '';
-    border-bottom: 3px rgb(245, 2, 2) solid;
+    border-bottom: 3px #494949 solid;
     display: inline-block;
     box-sizing: border-box;
 }

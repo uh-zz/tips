@@ -4,11 +4,11 @@ import './TodoApp.css';
 import { Observable, of, Subscription,throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax'
 import { fromFetch } from 'rxjs/fetch';
-import { switchMap, catchError,map ,mergeMap} from 'rxjs/operators';
+import { switchMap, catchError,map ,mergeMap,first} from 'rxjs/operators';
 import  Todo from './Todo'
 
-import { InputForm } from "./InputForm/InputForm"
-import { ListedTodo } from "./liestedTodo/ListedTodo"
+import InputForm from "./InputForm"
+import TodoList from './TodoList'
 
 type TodoAppProps = {
 
@@ -33,9 +33,6 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
     componentDidMount= ()=>{
         this.subsc =  this.subscribeEvent()
     }
-    componentWillUnmount =()=>{
-        this.subsc?.unsubscribe()
-    }
 
     appendEvent = (event:Todo)=>{
         this.setState(state=>{
@@ -46,19 +43,24 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
     }
     subscribeEvent(){
         let data$ = fromFetch('/todo/all/').pipe(
+            first(),
             mergeMap(response => response.ok ?response.json():throwError('RESPONSE IS BAD'))
         )
         
         let subsc = data$.subscribe({
-        next: (result:Todo[]) => {
-            console.log("RESPONSE: ", result)
-            this.setState({
-                todos:result
-            })
-        },
-        error:err => {
-            console.error(err)
-        }
+            next: (response:Todo[]) => {
+                let todos:Todo[] = []
+                if(response instanceof Array){
+                    response.forEach(data =>{
+                        let todo:Todo = new Todo(data.event, data.deadline ? new Date(data.deadline):undefined,data.id)
+                        todos.push(todo)
+                    })
+                }
+                this.setState({
+                    todos:todos
+                })
+            },
+            complete: ()=>{subsc.unsubscribe()}
         });
         return subsc
     }
@@ -72,19 +74,20 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
             body: todo
         }
     ).pipe(
+            first(),
             map(response => {
-                // ここ汚いから上手くやって欲しい
-                let result = response.response as any
-                let new_todo = new Todo()
-                Object.assign(new_todo,result)
+                let result = response.response
+                let new_todo = new Todo(result.event,new Date(result.deadline),result.id)
                 return new_todo
             })
         )
 
-        data$.subscribe({
+        let subsc = data$.subscribe({
             next: (result:Todo)=>{
                 this.appendEvent(result)
-            }
+                console.log("created item",result)
+            },
+            complete: ()=>{subsc.unsubscribe()}
         })
         
     }
@@ -100,16 +103,16 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
                 "message": "All Delete"
             }
             }
+        ).pipe(
+            first(),
         )
-        data$.subscribe({
+        let subsc = data$.subscribe({
             next: results => {
-                console.log(results)
-                this.setState(state=>{
-                    return {
+                this.setState({
                         todos:[]
-                    }
                 })
-            }
+            },
+            complete: ()=>{subsc.unsubscribe()}
         })
     }
 
@@ -123,35 +126,36 @@ export class TodoApp extends React.Component<TodoAppProps,TodoAppState>{
                 body: todo
             }
         ).pipe(
+            first(),
             map(response => {
-                // ここ汚いから上手くやって欲しい
-                let todos = response.response as any as Todo[]
+                let todos : Todo[] = []
+                if (response.response instanceof Array){
+                    response.response.forEach(data=>{
+                        todos.push(new Todo(data.event,new Date(data.deadline),data.id))
+                    })
+                }
                 return todos
             })
         )
-        data$.subscribe({
+        let subsc = data$.subscribe({
             next: (result:Todo[])=>{
                 this.setState({todos:result})
-            }
+            },
+            complete: ()=>{subsc.unsubscribe()}
         })
     }
 
     render(){
-        const listItems = this.state.todos.map((todo) =>
-            <ListedTodo key={todo.id} todo={todo} deleteItem={this.deleteItem} />
-        )
+        
         return(
-            <div className="TodoApp" style={{display:"flex",alignItems:"center",justifyContent:"center",margin:0,padding:0,flexWrap:"wrap"}}>
+            <div className="TodoApp" >
                 <div style={{flex:1,marginBottom:"auto",marginRight:"5%",minWidth:470,maxWidth:700}}>
                     <InputForm createItem={this.createItem} />
                 </div>
                 {/* <form onSubmit={this.allDelete}>
                     <input type="button" value="Delete All" />
                 </form> */}
-                <div style={{flex:1,marginBottom:"auto",minWidth:470,maxWidth:470}}>
-                    <h1 className="todo-list-header">Your ToDo List</h1>
-                    {listItems}
-                </div>
+                <TodoList todos={this.state.todos} deleteItem={this.deleteItem} />
             </div>
         )
     }

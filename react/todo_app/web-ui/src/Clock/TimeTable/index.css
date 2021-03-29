@@ -1,0 +1,45 @@
+.TimeTable{
+    height: 300px;
+    max-width: 550px;
+    min-width: 330px;
+    /* background-color: #fff; */
+    /* display: block; */
+    border-radius: 20px;
+    overflow: hidden;
+    color: #fff;
+}
+.TimeTableHeader{
+    display: block;
+    font-size: 32px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #252525;
+}
+
+.TimeTableColumns{
+    background-color: #252525;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.TimeTableColumns h1{
+    border-right: #4e4e4e solid 2px;
+}
+.TimeTableColumn{
+    display: block;
+    text-align: left;
+    height: 30px;
+    width: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+.TimeTableBody{
+    height: calc(100% - 70px );
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: rgb(54, 54, 54);
+}

@@ -1,40 +1,12 @@
 .TodoApp{
     color: black;
-    width: 100%;
-    font-style: italic;
-}
+    max-width: 1000px;
+    display:flex;
+    margin: 0 auto;
+    padding:0;
+    
+    justify-content:center;
+    align-items: flex-start;
 
-.todo-list-header{
-    border: 5px rgb(247, 50, 50) solid;
-    font-size: 45px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: violet;
-    /* 半円を作るには縦横比を1:2にしてboarder-radiusを以下のように指定する */
-    height: 100px;
-    width: 200px;
-    border-radius: 100px 100px 0 0 ;
+    flex-wrap: wrap;
 }
-/* .todo-list-header::before,
-.todo-list-header::after{
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    box-sizing: border-box;
-    content: '';
-    display: block;
-    height: 300px;
-    position: absolute;
-    width: 300px;
-    z-index: -1;
-}
-.todo-list-header::before{
-    background-color: #0f3;
-    transform: rotate(10deg);
-}
-.todo-list-header::after{
-    background-color: #ff0;
-    transform: rotate(-10deg);
-}
-
-.todo-list-header:hover{
-    opacity: 0.6;
-} */

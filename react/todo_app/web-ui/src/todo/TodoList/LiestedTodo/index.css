@@ -1,0 +1,96 @@
+.ListedTodo{
+    border: 2px solid #004dff;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-bottom: 20px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    
+    min-height: 120px;
+}
+.ListedTodoButtonContainer{
+    width: 80px ;
+}
+.ListedTodoCheckButton{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* justify-self: end; */
+
+    border: #004dff 2px solid;
+
+    transition: .2s;
+
+    cursor: pointer;
+}
+.ListedTodoCheckIcon{
+    width: 40px;
+    height: 20px;
+
+    margin: 10px auto 15px;
+    
+    border: #004dff 5px solid;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    
+    opacity: 0;
+}
+.ListedTodoCheckButton:hover{
+    width: 60px;
+    height: 60px;
+    border: #004cffbe 5px solid;
+}
+.ListedTodoCheckButton:hover .ListedTodoCheckIcon{
+    animation: checked .2s forwards;
+}
+
+@keyframes checked{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.ListedTodoCheckButton:active{
+    border-color: rgb(162,6,251);
+}
+.ListedTodoCheckButton:active .ListedTodoCheckIcon{
+    border-color: rgb(162,6,251);
+}
+
+
+.ListedTodoContent{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    flex: 1;
+}
+
+.ListedTodoContentEvent{
+    width: 100%;
+
+    overflow-wrap: break-word;
+    overflow: scroll;
+    max-height: 200px;
+
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 40px;
+    text-align: left;
+}
+.ListedTodoContentDeadline{
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+}

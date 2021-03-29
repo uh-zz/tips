@@ -1,0 +1,38 @@
+.InputForm{
+    max-width: 500px;
+    padding: 20px;
+    /* display: flex; */
+    overflow-wrap: wrap;
+    
+}
+.InputFormContainer{
+    /* display: flex; */
+}
+
+.InputFormButton{
+    border-color: #004dff;
+    color: pink;
+}
+
+.InputFormHeader{
+    
+}
+.InputFormHeaderTitle{
+    display: inline-block;
+    font-size: 45px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.InputFormEvent{
+    /* display: flex; */
+    padding-bottom: 20px;
+}
+
+.InputFormDeadline{
+    padding-bottom: 20px;
+    /* display: flex; */
+}
