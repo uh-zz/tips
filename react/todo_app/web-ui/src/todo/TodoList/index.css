@@ -1,0 +1,19 @@
+.TodoList{
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    padding: 20px;
+}
+
+
+.TodoListItems{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.TodoListHeader{
+    font-size: 45px;
+    margin-top: 0 ;
+    margin-bottom: 30px ;
+}

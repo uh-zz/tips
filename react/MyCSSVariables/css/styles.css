@@ -1,0 +1,16 @@
+:root{
+    --my-color:blue;
+}
+/* body {
+    --my-color:blue;
+} */
+h1{
+    color: var(--my-color);
+    /* 大文字と小文字は区別される */
+    border-bottom: 3px solid var(--my-color);
+    /* border-bottom: 3px solid var(--My-color,pink); */
+}
+
+p{
+    color: var(--my-color);
+}
