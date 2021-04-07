@@ -2,17 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@1,100&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif,
-    /* ウェブフォントの登録 */
-    'Grandstander', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Helvetica Neue',Helvetica,Arial,'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;
   text-align: center;
-  /* background-color: rgb(122,75,210); */
+  font-size: 12px;
   background-color: #f6f6f6;
-  /* background-image: linear-gradient(135deg,rgb(122,75,210),rgb(248, 170, 212)); */
   background-size: cover;
 }
 

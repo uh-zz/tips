@@ -1,0 +1,18 @@
+.SignUpPage{
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+.SignUpPage > * {
+    flex: 0 0 1;
+}
+.SignUpHeader {
+    display: block;
+    flex: 0 0 1;
+}
+.SignUpPage >  div > div {
+    margin-right: 30px;
+}

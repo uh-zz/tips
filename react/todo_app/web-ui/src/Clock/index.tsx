@@ -1,9 +1,11 @@
 import React from 'react'
 import './index.css'
-import { fromEvent, interval, Observable, Subscription, timer } from 'rxjs'
+import { fromEvent, interval, Subscription } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import { switchMap, catchError,map ,mergeMap,first} from 'rxjs/operators';
-import TimeTable from './TimeTable';
+import { first} from 'rxjs/operators';
+// import TimeTable from './TimeTable';
+import DurationChart from './DurationChart'
+// import { SettingsSystemDaydreamTwoTone } from '@material-ui/icons';
 
 type ClockProps = {
 
@@ -62,13 +64,19 @@ export class Clock extends React.Component<ClockProps,ClockState>{
         )
     }
     componentWillUnmount(){
+        this.stopClock()
         this.state.subsc$?.unsubscribe()
         this.beforeUnLoad?.unsubscribe()
+
     }
 
+
+
     startClock = () => {
+        let newDuration = new Duration(new Date())
         if(!this.state.duration.start){
-            this.setState({duration:new Duration(new Date())})  
+            console.log("start!")
+            this.setState({duration:newDuration})  
         }
         if(!this.state.is_studying){
             // タイマーをスタートさせる
@@ -77,7 +85,7 @@ export class Clock extends React.Component<ClockProps,ClockState>{
                     next:result=>{
                         
                         this.setState({
-                            duration:new Duration(this.state.duration.start,new Date())
+                            duration:new Duration(this.state.duration.start,new Date(),this.state.duration.id)
                         })
                         if(this.state.duration.getDurationS() > 24 * 3600){
                             alert("Maybe you don't live in the Earth !")
@@ -89,7 +97,27 @@ export class Clock extends React.Component<ClockProps,ClockState>{
 
                 }),
                 is_studying:true
-        })
+            })
+            console.log("duration:",this.state.duration.start)
+            const data$ = ajax({
+                url: '/clock/start',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: newDuration
+            }).pipe(first())
+
+            data$.subscribe({
+                next:responce => {
+                    console.log(responce.response)
+                    let id = responce.response.id
+                    this.setState({
+                        duration:new Duration(this.state.duration.start,this.state.duration.end,id),
+                    })
+                },
+                error:err=> {throw new Error('Clock can\'t stop')}
+            })
 
         }
     }
@@ -106,7 +134,7 @@ export class Clock extends React.Component<ClockProps,ClockState>{
             },
             body: this.state.duration
         }).pipe(first())
-        let subsc = data$.subscribe({
+        data$.subscribe({
             next:responce => {
                 this.state.subsc$?.unsubscribe()
                 const durations:Duration[] = []
@@ -138,7 +166,7 @@ export class Clock extends React.Component<ClockProps,ClockState>{
             },
             body: duration
         }).pipe(first())
-        let subsc = data$.subscribe({
+        data$.subscribe({
             next:responce => {
                 this.setState({
                     durations:this.state.durations.filter(function( duration_ ) {
@@ -165,16 +193,9 @@ export class Clock extends React.Component<ClockProps,ClockState>{
 
         
         return (
-            <div className="ClockWindowStrings" >
-                <h1 style={{width:"15%"}}>{time_str[0]}</h1>
-                <h1 style={{width:"15%"}}>{time_str[1]}</h1>
-                <h1 style={{width:"5%"}}>{time_str[2]}</h1>
-                <h1 style={{width:"15%"}}>{time_str[3]}</h1>
-                <h1 style={{width:"15%"}}>{time_str[4]}</h1>
-                <h1 style={{width:"5%"}}>{time_str[5]}</h1>
-                <h1 style={{width:"15%"}}>{time_str[6]}</h1>
-                <h1 style={{width:"15%"}}>{time_str[7]}</h1>
-            </div>
+            <h1>
+                {time_str}
+            </h1>
         )
     }
 
@@ -187,12 +208,14 @@ export class Clock extends React.Component<ClockProps,ClockState>{
         return allTime
     }
 
+
     render(){
         return(
             <div className="Clock">
-                <div className="ClockTimeTableWrapper">
+                {/* <div className="ClockTimeTableWrapper">
                     <TimeTable durations={this.state.durations} deleteItem={this.deleteDuration}/>
-                </div>
+                </div> */}
+                <DurationChart durations={this.state.durations} duration={this.state.duration}/>
                 <div className="ClockContainer">
                     <div className="ClockMessage">
                         <h1>

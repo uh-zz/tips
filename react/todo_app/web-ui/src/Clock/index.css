@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
-    background-color: #1f1f1f;
+    background-color: #2f2f2f;
     padding: 40px 30px 20px ;
 }
 .ClockTimeTableWrapper{
@@ -33,7 +33,6 @@
 }
 .ClockMessage h1{
     font-size: 24px;
-    font-family: Helvetica, Arial, sans-serif;;
     text-align: left;
 }
 .ClockWindow{
@@ -45,20 +44,12 @@
     margin-left: auto;
     margin-right: auto;
 }
-/* 
-    普通に文字列を入れると
-    1と0ではサイズがことなるので
-    時刻が変わると:の位置がずれてしまうので、
-    そうならないよう数字は1文字ずつh1要素にしてある。 
-*/
-.ClockWindowStrings{
-    display:flex;
-    height: inherit;
-}
-.ClockWindowStrings h1{
-    font-family: Helvetica , Arial, sans-serif;
-    font-size: 70px;
+
+.ClockWindow h1{
+    font-variant-numeric: tabular-nums;
+    font-size: 80px;
     text-align: center;
+    line-height: 90px;
     margin: 0;
 }
 .ClockButtonWrapper{

@@ -1,10 +1,10 @@
 import React from 'react';
 import './TodoApp.css';
 
-import { Observable, of, Subscription,throwError } from 'rxjs';
+import { Subscription,throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax'
 import { fromFetch } from 'rxjs/fetch';
-import { switchMap, catchError,map ,mergeMap,first} from 'rxjs/operators';
+import { map ,mergeMap,first} from 'rxjs/operators';
 import  Todo from './Todo'
 
 import InputForm from "./InputForm"

@@ -15,8 +15,11 @@ type Todo struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 
-	Event string `json:"event"`
+	Event    string    `json:"event"`
 	Deadline time.Time `json:"deadline"`
+
+	UserID int
+	User   User `json:"user" gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type ITodo interface {
@@ -33,12 +36,12 @@ func (todo *Todo) Create() error {
 
 // Todo.IDに欲しいレコードのIDを入れておいてね。
 func (todo *Todo) Read() error {
-	err := todo.DB.First(&todo, todo.ID).Error
+	err := todo.DB.Take(&todo, todo.ID).Error
 	return err
 }
 
 func (todo *Todo) Update() error {
-	err := todo.DB.Save(&todo).Error
+	err := todo.DB.Updates(&todo).Error
 	return err
 }
 
@@ -54,19 +57,19 @@ func ConstructTodo(db *gorm.DB) *Todo {
 type Todos []Todo
 
 type ITodos interface {
-	All(db *gorm.DB) error
-	DeleteAll(db *gorm.DB) error
+	All(db *gorm.DB, user User) error
+	DeleteAll(db *gorm.DB, user User) error
 }
 
-func (todos *Todos) All(db *gorm.DB) error {
-	err := db.Find(&todos).Error
+func (todos *Todos) All(db *gorm.DB, user User) error {
+	err := db.Find(&todos, " user_id = ? ", user.ID).Error
 	for _, todo := range *todos {
 		todo.DB = db
 	}
 	return err
 }
 
-func (todos *Todos) DeleteAll(db *gorm.DB) error {
-	err := db.Session(&gorm.Session{AllowGlobalUpdate: true}).Delete(&Todo{}).Error
+func (todos *Todos) DeleteAll(db *gorm.DB, user User) error {
+	err := db.Session(&gorm.Session{AllowGlobalUpdate: true}).Delete(&Todo{}, " user_id = ? ", user.ID).Error
 	return err
 }

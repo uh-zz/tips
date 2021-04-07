@@ -1,17 +1,17 @@
-.App-logo {
-/* height: 40vmin; */
+.AppLogo {
     pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-.App-logo {
-    flex: 10;
+.AppLogo {
+    flex: 1;
     animation: App-logo-move 0.3s linear;
     animation-fill-mode:forwards;
-    color: #000;
+    color: #fff;
     font-weight: bold;
-    /* shadowは重ね掛けすることもできる */
-    text-shadow: 0px 2px 2px rgb(68, 68, 68);
+    font-size:40px;
+    text-align: left;
+    /* letter-spacing: 0.1em; */
 }
 }
 @keyframes App-logo-move {
@@ -19,102 +19,26 @@
         transform:translateX(-130%);
     }
     to {
-        transform: translateX(-5%);
+        transform: translateX(20px);
     }
 }
 
 .Header {
-    background-color: #fff;
+    background-color: #6bbaa7;
     background-size: cover;
     position: fixed;
     top:0px;
     z-index: 999;
     display: flex;
     width: 100%;
-    height: 120px;
+    height: 80px;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    /* font-style: italic; */
-    color: black;
-}
-
-
-/* ハンバーガーメニューのCSS */
-.header-menu{
-    width: 100px;
-    height: 100px;
-    background-color: inherit;
-    display: block;
-    box-sizing: border-box;
-    border: none;
-}
-
-.header-menu-line{
-    width: 50px;
-    height: 2px;
-    content: '';
-    border-bottom: 3px #494949 solid;
-    display: inline-block;
-    box-sizing: border-box;
-}
-.header-menu div:nth-of-type(1){
-    top: 6px;
-}
-.header-menu:nth-of-type(2){
-    top: 16px;
-}
-.header-menu:nth-of-type(3){
-    top: 6px;
+    color: #fff;
 }
 
 
 
-/* .menu{
-    appearance: none;
-    flex: 1;
-    padding: 10px;
-    border: none;
-}
 
-.menu[disabled]{
-    cursor: default;
-}
 
-.menu-ham {
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    display: block;
-    position: relative;
-}
-  
-.menu-ham span,
-.menu-ham span:before,
-.menu-ham span:after {
-    content: '';
-    display: block;
-    height: 4px;
-    width: 40px;
-    border-radius: 3px;
-    background: #333;
-    transition: 0.5s;
-    position: absolute;
-    margin: 2px 0px;
-}
 
-.menu-ham span:before {
-    bottom: 8px;
-}
-
-.menu-ham span:after {
-    top: 8px;
-}
-.menu p{
-    width: 40px;
-    font-family: Arial;
-    font-size: 15px;
-    padding:0%;
-    margin-top: 0px;
-    cursor: pointer;
-} */

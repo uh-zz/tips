@@ -1,0 +1,18 @@
+.LoginPage{
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+.LoginPage > * {
+    flex: 0 0 1;
+}
+.LoginHeader {
+    display: block;
+    flex: 0 0 1;
+}
+.LoginPage >  div > div {
+    margin-right: 30px;
+}

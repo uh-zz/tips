@@ -11,8 +11,8 @@ type TodoListProps = {
 export class TodoList extends React.Component<TodoListProps>{
     render(){
         const listItems = this.props.todos.map((todo) => (
-            <li>
-                <ListedTodo key={todo.id} todo={todo} deleteItem={this.props.deleteItem} />
+            <li key={todo.id}>
+                <ListedTodo todo={todo} deleteItem={this.props.deleteItem} />
             </li>
         )
         )
