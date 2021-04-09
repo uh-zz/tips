@@ -42,16 +42,16 @@ services:
       MYSQL_HOST: todo_host
       TZ: 'Asia/Tokyo'
 
-  web-ui:
-    container_name: todo_ui
-    build: ../build/web-ui
-    volumes:
-      - ../web-ui:/web-ui
-    tty: true
-    ports:
-     - 3000:3000
-    networks: 
-      - todo-network
+  # web-ui:
+  #   container_name: todo_ui
+  #   build: ../build/web-ui
+  #   volumes:
+  #     - ../web-ui:/web-ui
+  #   tty: true
+  #   ports:
+  #    - 3000:3000
+  #   networks: 
+  #     - todo-network
     
   
 volumes:

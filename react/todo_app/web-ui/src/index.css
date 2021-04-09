@@ -1,5 +1,69 @@
-/* ウェブフォントの読み込み */
-@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@1,100&display=swap');
+:root {
+
+  /* Colors: */
+  --vivid-yellow: #D8FF00;
+  --omochi-blue: #000164;
+  --japanese-red: #DD1122;
+  --kyoto-white: #FDFCF0;
+  --china-black: #090A0B;
+  --unnamed-color-e3d7a3: #E3D7A3;
+  --unnamed-color-7dbea6: #7DBEA6;
+  
+  /* Font/text values */
+  --unnamed-font-family-helvetica: Helvetica;
+  --unnamed-font-style-normal: normal;
+  --unnamed-font-weight-bold: bold;
+  --unnamed-font-weight-normal: normal;
+  --unnamed-font-size-25: 25px;
+  --unnamed-font-size-40: 40px;
+  --unnamed-font-size-64: 64px;
+  --unnamed-font-size-100: 100px;
+  --unnamed-character-spacing-0: 0px;
+  --unnamed-line-spacing-30: 30px;
+  --unnamed-line-spacing-48: 48px;
+  --unnamed-line-spacing-77: 77px;
+  --unnamed-line-spacing-120: 120px;
+  --unnamed-text-transform-uppercase: uppercase;
+}
+  
+/* Character Styles */
+.clock {
+  font-family: var(--unnamed-font-family-helvetica);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-bold);
+  font-size: var(--unnamed-font-size-100);
+  line-height: var(--unnamed-line-spacing-120);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-000000);
+  text-transform: var(--unnamed-text-transform-uppercase);
+}
+.bigbold {
+  font-family: var(--unnamed-font-family-helvetica);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-bold);
+  font-size: var(--unnamed-font-size-40);
+  line-height: var(--unnamed-line-spacing-48);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-000000);
+}
+.semibig {
+  font-family: var(--unnamed-font-family-helvetica);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-25);
+  line-height: var(--unnamed-line-spacing-30);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-000000);
+}
+.logo {
+  font-family: var(--unnamed-font-family-helvetica);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-bold);
+  font-size: var(--unnamed-font-size-64);
+  line-height: var(--unnamed-line-spacing-77);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-000000);
+}
 body {
   margin: 0;
   font-family: 'Helvetica Neue',Helvetica,Arial,'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;
@@ -7,7 +71,9 @@ body {
   font-size: 12px;
   background-color: #f6f6f6;
   background-size: cover;
+
 }
+  
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -15,8 +15,8 @@ type User struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 
-	UserName string `json:"userName"`
-	Password string `json:"password"`
+	UserName string `json:"userName" gorm:"unique;not null"`
+	Password string `json:"password" gorm:"not null"`
 }
 
 type IUser interface {

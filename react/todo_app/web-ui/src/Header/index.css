@@ -25,6 +25,7 @@
 
 .Header {
     background-color: #6bbaa7;
+    background-color: var( --omochi-blue );
     background-size: cover;
     position: fixed;
     top:0px;
