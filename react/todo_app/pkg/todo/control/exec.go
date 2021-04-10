@@ -3,7 +3,9 @@ package control
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"net/http"
+	"runtime"
 	"time"
 
 	"github.com/gin-gonic/contrib/static"
@@ -39,12 +41,12 @@ func Exec() error {
 	// dsn := "user:pass@tcp(todo_db)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(connect), &gorm.Config{})
 	if err != nil {
-		fmt.Println(err)
+		log.Print(err)
 		return err
 	}
 	err = db.AutoMigrate(&models.Todo{}, &models.Duration{}, &models.User{}, &models.Session{})
 	if err != nil {
-		fmt.Println(err)
+		log.Print(err)
 		return err
 	}
 
@@ -56,7 +58,7 @@ func Exec() error {
 	r.GET("/todo/all", func(ctx *gin.Context) {
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			ctx.JSON(http.StatusBadRequest, gin.H{
 				"error":   true,
 				"message": "Can't get user from your cookie.",
@@ -70,7 +72,7 @@ func Exec() error {
 		todos := models.Todos{}
 		err = todos.All(db, *user)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			ctx.JSON(http.StatusInternalServerError, gin.H{
 				"error":   true,
 				"message": "Can't save your todos.",
@@ -82,7 +84,7 @@ func Exec() error {
 	r.POST("/todo/create", func(ctx *gin.Context) {
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			ctx.JSON(http.StatusBadRequest, gin.H{
 				"error":   true,
 				"message": "Can't get user from your cookie.",
@@ -93,18 +95,18 @@ func Exec() error {
 		err = ctx.BindJSON(&todo)
 		// todo.UserID = session.UserID
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 
 		todo.UserID = session.UserID
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		err = todo.Create()
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		ctx.JSON(http.StatusOK, todo)
@@ -117,7 +119,7 @@ func Exec() error {
 		todos := &models.Todos{}
 		err := todos.DeleteAll(db, session.User)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{
@@ -129,20 +131,20 @@ func Exec() error {
 		// Sessionの有無をチェック
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		// Todoの読み込み
 		todo := models.ConstructTodo(db)
 		err = ctx.BindJSON(&todo)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		// Todoを消去
 		err = todo.Delete()
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 
@@ -160,7 +162,7 @@ func Exec() error {
 		// Sessionを取得
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		user := &models.User{}
@@ -175,7 +177,7 @@ func Exec() error {
 		// Sessionを取得
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		user := &models.User{}
@@ -185,7 +187,7 @@ func Exec() error {
 		duration.UserID = session.UserID
 		err = ctx.BindJSON(&duration)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		duration.Start = duration.Start.Local()
@@ -208,7 +210,7 @@ func Exec() error {
 				err = v.Update()
 			}
 			if err != nil {
-				fmt.Println(err)
+				log.Print(err)
 				return
 			}
 			fmt.Printf("Clock Stop : %+v\n", v)
@@ -217,7 +219,7 @@ func Exec() error {
 		resp_durations := models.Durations{}
 		err = resp_durations.FetchAllToday(db, *user)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 
@@ -227,7 +229,7 @@ func Exec() error {
 		// Sessionを取得
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		user := &models.User{}
@@ -237,7 +239,7 @@ func Exec() error {
 		duration.UserID = session.UserID
 		err = ctx.BindJSON(&duration)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		duration.Start = duration.Start.Local()
@@ -246,13 +248,13 @@ func Exec() error {
 		all_durations := models.Durations{}
 		err = all_durations.FetchAllToday(db, *user)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		for _, v := range all_durations {
-			fmt.Println(v)
+			log.Print(v)
 			if v.End.Valid == false {
-				fmt.Println("return not ended item")
+				log.Print("return not ended item")
 				fmt.Printf("%+v\n", v)
 				ctx.JSON(http.StatusOK, v)
 				return
@@ -268,7 +270,7 @@ func Exec() error {
 		// Sessionを取得
 		session, err := fetchSessionFromCookie(ctx, db)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		user := &models.User{}
@@ -277,12 +279,12 @@ func Exec() error {
 		duration := models.ConstructDuration(db)
 		err = ctx.BindJSON(&duration)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		err = duration.Delete()
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		durations := &models.Durations{}
@@ -295,7 +297,7 @@ func Exec() error {
 		user := models.ConstructUser(db)
 		err := c.BindJSON(&user)
 		if err != nil {
-			fmt.Println(err)
+			log.Print(err)
 			return
 		}
 		user.Create()
@@ -308,8 +310,8 @@ func Exec() error {
 		err := c.BindJSON(&user)
 		err = user.ReadFromPasswordAndName()
 		if err != nil {
-			fmt.Println(err, "Password", user.Password, "Name", user.UserName)
-			fmt.Println("Cant't find item", err)
+			log.Print(err, "Password", user.Password, "Name", user.UserName)
+			log.Print("Cant't find item", err)
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"message": "error",
 			})
@@ -318,12 +320,28 @@ func Exec() error {
 		session := models.ConstructSession(db)
 		err = session.ReadFromUser(*user)
 		if err != nil {
-			fmt.Println("Reqest can't process cookie:", err)
+			log.Print("Reqest can't process cookie:", err)
 			c.JSON(http.StatusBadRequest, nil)
 			return
 		}
 		c.SetCookie("SessionID", session.UUID, 60*60*24*1, "/", "", false, false)
 		c.JSON(http.StatusOK, nil)
+	})
+	r.GET("/api/v1/checkIn", func(ctx *gin.Context) {
+		session, err := fetchSessionFromCookie(ctx, db)
+		if err != nil {
+			ctx.JSON(http.StatusOK, gin.H{
+				"hasSession": false,
+				"user":       nil,
+			})
+		}
+		user := &models.User{DB: db, ID: uint(session.UserID)}
+		user.Read()
+		ctx.JSON(http.StatusOK, gin.H{
+			"hasSession": true,
+			"user":       user,
+		})
+		return
 	})
 
 	// Session管理
@@ -335,7 +353,7 @@ func Exec() error {
 				session := models.ConstructSession(db)
 				err := session.Clean(120 * time.Millisecond)
 				if err != nil {
-					fmt.Println(err)
+					log.Print(err)
 				}
 			}
 		}
@@ -352,13 +370,25 @@ func fetchSessionFromCookie(ctx *gin.Context, db *gorm.DB) (*models.Session, err
 	session := models.ConstructSession(db)
 	sessionID, err := ctx.Cookie("SessionID")
 	if err != nil {
-		fmt.Println(err)
+		i := 0
+		for {
+			pt, file, line, ok := runtime.Caller(i)
+			if !ok {
+				// 取得できなくなったら終了
+				break
+			}
+			funcName := runtime.FuncForPC(pt).Name()
+			fmt.Printf("file=%s, line=%d, func=%v\n", file, line, funcName)
+			i += 1
+		}
+		log.SetFlags(log.Llongfile)
+		log.Print(err)
 		return nil, err
 	}
 	session.UUID = sessionID
 	err = session.Read()
 	if err != nil {
-		fmt.Println(err)
+		log.Print(err)
 		return nil, err
 	}
 	ctx.SetCookie("SessionID", sessionID, 60*60*24*1, "/", "", false, false)

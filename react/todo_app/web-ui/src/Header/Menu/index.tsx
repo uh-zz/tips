@@ -48,19 +48,19 @@ export default class Menu extends React.Component<MenuProps,MenuState>{
                 </div>
                 <nav className={this.calcNavClass()}>
                     <ul>
-                        <li><a 
+                        <li><a className="MenuLink"
                             href="#top"
                             onClick={()=>{
                                 this.setState({isActive:false})
                             }}
                             >Top</a>
                         </li>
-                        <li><a 
+                        <li><div className="MenuLink"
                             onClick={()=>{
                                 this.setState({isActive:false})
                                 this.signOut()
                             }}
-                            >Sign Out</a>
+                            >Sign Out</div>
                         </li>
                     </ul>
                 </nav>

@@ -17,6 +17,8 @@ import {
   // Link,
   Redirect,
 } from "react-router-dom";
+import { ajax } from 'rxjs/ajax';
+import { first } from 'rxjs/operators';
 
 type AppState = {
   user:User
@@ -32,6 +34,7 @@ class App extends React.Component<AppProps,AppState> {
     this.state = {
       user:new User()
     }
+    this.checkIn()
   }
 
   setUser = (user:User) => {
@@ -43,23 +46,49 @@ class App extends React.Component<AppProps,AppState> {
   createUser = (userName:string,password:string)=>{
     this.state.user.create(userName,password,this.setUser)
   }
+  componentDidMount = ()=>{
+
+  }
+
+  checkIn = ()=>{
+    if(!document.cookie.match("SessionID")){
+      this.history.push("/login")
+      return
+    }
+    let data$ = ajax({
+      url: '/api/v1/checkIn',
+      method: 'GET',
+    }).pipe(
+        first(),
+    )
+    let subsc = data$.subscribe({
+        next:response => {
+          if(!response.response.hasSession){
+            this.history.push("/login")
+            return
+          }
+          let user = new User()
+          user.userName = response.response.user.userName
+          this.setState({user:user})
+        },
+        error:err=> {
+          this.history.push("/login")
+        },
+        complete: ()=>{
+            subsc.unsubscribe()
+        }
+    })
+  }
   render(){
     return(
-    <div className="App">
+      <div className="App">
       
         
-      <Header history={this.history} />
-      {/* Headerの高さ分の余白をつける */}
-      <div style={{paddingTop:80}}></div>
+      <Header history={this.history} user={this.state.user} />
       <Router history={this.history}>
       
         <Switch>
           <Route exact path={'/'} render={()=>{
-            if(!document.cookie){
-              return (
-                <Redirect to="/login"/>
-              )
-            }
             return (
               <div >
                 {/* ここが本体 */}
@@ -71,7 +100,7 @@ class App extends React.Component<AppProps,AppState> {
           }}>
           </Route>
           <Route path="/login" >
-            <LoginPage user={this.state.user} history={this.history} />
+            <LoginPage user={this.state.user} history={this.history} setUser={this.setUser} />
           </Route>
           <Route path="/signup" >
             <SignUpPage user={this.state.user} createUser={this.setUser} history={this.history}/>
@@ -82,5 +111,6 @@ class App extends React.Component<AppProps,AppState> {
     </div>
   )}
 }
+
 
 export default App;

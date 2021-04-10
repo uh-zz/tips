@@ -7,7 +7,9 @@
 .HeaderMenu{
     position: absolute;
     right: 10px;
-    top: 10px;
+    /* top: 10px; */
+    top: 0px;
+    bottom: 0px;
     z-index: 1000;
     background-color: transparent;
     cursor: pointer;
@@ -78,15 +80,16 @@
     text-align: left;
 }
 
-.Nav ul li a{
+.Nav ul li .MenuLink{
     display: inline-block;
     text-decoration: none;
     color: #000;
     transition: all 0.2s;
+    cursor: pointer;
 }
-.Nav ul li a:hover{
+.Nav ul li .MenuLink:hover{
     color: #fff;
 }
-.Nav ul li a:active{
+.Nav ul li .MenuLink:active{
     color: #004dff;
 }

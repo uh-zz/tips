@@ -9,6 +9,7 @@ import { History } from 'history'
 type LoginPageProps = {
     user:User
     history:History
+    setUser:(user:User)=>void
 }
 type LoginPageState = {
     userName:string
@@ -40,15 +41,20 @@ export default class LoginPage extends React.Component<LoginPageProps,LoginPageS
             first(),
         )
         let subsc = data$.subscribe({
-            next:responce => {
+            next:response => {
+                if (response.status !== 200){
+                    throw new Error(`Bad status!:${response.status}`)
+                }
+                let user = new User()
+                user.userName = this.state.userName
+                this.props.setUser(user)
                 this.props.history.push("/")
             },
             error:err=> {throw new Error('Can\'t get Cookie')},
-            complete: ()=>{subsc.unsubscribe()}
-        })
-        this.setState({
-            userName:"",
-            password:"",
+            complete: ()=>{
+                subsc.unsubscribe()
+                console.log("complete!")
+            }
         })
     }
     render(){
@@ -100,7 +106,7 @@ export default class LoginPage extends React.Component<LoginPageProps,LoginPageS
                     </div>
                 </div>
                 <div>
-                    <a href="/signup">Create a new account ?</a>
+                    <div onClick={()=>{this.props.history.push("./signup")}}>Create a new account ?</div>
                 </div>
             </div>
         )
