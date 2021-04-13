@@ -1,4 +1,4 @@
-class Todo{
+export class Todo{
     id?:number
     event?:string
     deadline?:Date
@@ -8,5 +8,3 @@ class Todo{
         this.id=id
     }
 }
-
-export default Todo

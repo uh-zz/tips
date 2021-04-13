@@ -5,7 +5,7 @@ import { Subscription,throwError } from 'rxjs';
 import { ajax } from 'rxjs/ajax'
 import { fromFetch } from 'rxjs/fetch';
 import { map ,mergeMap,first} from 'rxjs/operators';
-import  Todo from './Todo'
+import  {Todo} from './Todo'
 
 import InputForm from "./InputForm"
 import TodoList from './TodoList'

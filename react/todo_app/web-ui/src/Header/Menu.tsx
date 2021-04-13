@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import styles from './Menu.module.css';
 import classNames from 'classnames'
 import {History} from 'history'
 
@@ -10,7 +10,7 @@ type MenuState ={
     isActive: boolean
 }
 
-export default class Menu extends React.Component<MenuProps,MenuState>{
+export class Menu extends React.Component<MenuProps,MenuState>{
 
     constructor(props:MenuProps){
         super(props)
@@ -25,22 +25,22 @@ export default class Menu extends React.Component<MenuProps,MenuState>{
     }
 
     calcMenuClass = ()=>{
-        return classNames("HeaderMenu",{"Active":this.state.isActive})
+        return classNames(styles.HeaderMenu,{ [styles.Active] : this.state.isActive})
     }
     calcNavClass = ()=>{
-        return classNames("Nav",{"Active":this.state.isActive})
+        return classNames(styles.Nav,{[styles.Active] : this.state.isActive})
     }
 
     render(){
         return(
-            <div className="Menu">
+            <div className={styles.Menu}>
                 <div 
-                className={this.calcMenuClass()}
-                onClick={()=>{
-                    this.setState({
-                        isActive:!this.state.isActive
-                    })
-                }} 
+                    className={this.calcMenuClass()}
+                    onClick={()=>{
+                        this.setState({
+                            isActive:!this.state.isActive
+                        })
+                    }} 
                 >
                     <span></span>
                     <span></span>
@@ -48,14 +48,14 @@ export default class Menu extends React.Component<MenuProps,MenuState>{
                 </div>
                 <nav className={this.calcNavClass()}>
                     <ul>
-                        <li><a className="MenuLink"
+                        <li><a className={styles.MenuLink + " big-bold-font"}
                             href="#top"
                             onClick={()=>{
                                 this.setState({isActive:false})
                             }}
                             >Top</a>
                         </li>
-                        <li><div className="MenuLink"
+                        <li><div className={styles.MenuLink + " big-bold-font"}
                             onClick={()=>{
                                 this.setState({isActive:false})
                                 this.signOut()

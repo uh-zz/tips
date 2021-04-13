@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from '../Todo';
+import {Todo} from '../Todo';
 import './index.css';
 import Button from '@material-ui/core/Button';
 import DateFnsUtils from '@date-io/date-fns';

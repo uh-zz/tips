@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import {TodoApp} from './todo/TodoApp'
-import Header from './Header'
+import {TodoApp} from './TodoApp/TodoApp'
+import {Header} from './Header'
 import Clock from './Clock'
 import Footer from './Footer'
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
 import User from './User';
 import { createBrowserHistory } from "history";
+import { TodoInputForm } from './TodoInputForm'
 
 
 import {
@@ -83,8 +84,7 @@ class App extends React.Component<AppProps,AppState> {
     return(
       <div className="App">
       
-        
-      <Header history={this.history} user={this.state.user} />
+      <Header history={this.history} user={this.state.user}  />
       <Router history={this.history}>
       
         <Switch>
@@ -93,8 +93,8 @@ class App extends React.Component<AppProps,AppState> {
               <div >
                 {/* ここが本体 */}
                 <Clock />
-                <TodoApp />
-                
+                {/* <TodoApp /> */}
+                <TodoInputForm />
               </div>
             )
           }}>

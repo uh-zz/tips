@@ -1,0 +1,71 @@
+.Header {
+    background: var(--omochi-blue) 0% 0% no-repeat padding-box;
+    background: var(--kyoto-white) 0% 0% no-repeat padding-box;
+    position: relative;
+    display: flex;
+    height: 64px;
+    width: 100%;
+    align-content: center;
+    color: var(--kyoto-white);
+    color: var(--omochi-blue);
+    /* border-bottom: 5px solid var(--vivid-yellow); */
+    /* box-shadow: 0px 3px 3px var(--china-black); */
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,.2);
+    box-sizing: content-box; 
+}
+.HeaderUserName{
+    position: absolute;
+    right: 100px;
+    bottom: 0px;
+    padding:0px;
+    margin:0px;
+}
+.HeaderUserName p{
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+.AppLogo {
+    display: block;
+    margin-left: 26px;
+    /* margin-top: calc( ( 100% - 64px ) / 2 ); */
+    /* margin-bottom: calc( ( 100% - 64px ) / 2 ); */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+        animation: App-logo-move 0.3s linear;
+        animation-fill-mode:forwards;
+        
+    }
+}
+@keyframes App-logo-move {
+    from {
+        transform:translateX(-130%);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+.Menu{
+    position: absolute;
+    /* top: calc( ( 100% - 50px ) / 2 ); */
+    bottom: 0px;
+    right: 20px;
+    width: 60px;
+    height: 50px;
+}
+
+.UserName{
+    text-decoration-style: dashed;
+    text-decoration-line: underline;
+    text-decoration-color: var(--kyoto-white);
+    cursor: pointer;
+}
+
+
+
+
+
+

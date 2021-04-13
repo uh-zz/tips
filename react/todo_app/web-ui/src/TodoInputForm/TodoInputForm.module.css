@@ -1,0 +1,62 @@
+.TodoInputForm{
+    background-color: var(--kyoto-white);
+    /* border: 10px solid var(--china-black); */
+    border-radius: 16px;
+    /* color: var(--kyoto-white); */
+    width: calc( 50% - 50px );
+    margin:20px;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,.2);
+}
+.TodoInputFormHeader{
+}
+.Form{
+    margin: 10px auto;
+    width: 300px;
+}
+.FormTitle{
+    margin-right: 20px;
+}
+.FormTitle h2{
+    padding-top: calc( 100% - 1em );
+    /* margin-top: 100px; */
+}
+.FormTextField{
+    width: 300px;
+}
+.FormTextField input{
+    background-color: #fff;
+}
+.Forms{
+}
+.Form h2{
+    display: block;
+    text-align: left;
+}
+.TextInput{
+    display: inline-block;
+    height: 100px;
+    
+}
+.TextInput:focus{
+    border-radius: 5px;
+    border-style: none;
+    border: 2px solid #004dff;
+    box-shadow: 0px 0px 0 4px #00a2ff2a;
+    outline-style: none;
+    /* outline: solid 2px #004dff; */
+    /* outline-color: #004dff; */
+    
+}
+.DetailForm{
+    resize: none;
+    width: 200px;
+    border:#090A0B 2px solid;
+    border-radius: 4px 4px 0px 0px;
+}
+.DetailForm:focus{
+    border-radius: 5px;
+    border-style: none;
+    border: 2px solid #004dff;
+    box-shadow: 0px 0px 0 4px #00a2ff2a;
+    outline-style: none;
+}
