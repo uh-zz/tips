@@ -1,0 +1,49 @@
+version: "3"
+services:
+  db:
+    container_name: todo_db
+    build: ../build/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: todo_root_password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: todo_user
+      MYSQL_PASSWORD: todo_password
+      # MYSQL_HOST: todo_host
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - todo-db:/var/lib/mysql
+      - ../data:/dump
+    ports:
+      - 3306:3306
+    networks: 
+      - todo-network
+    # tty: true
+    # 初回起動時
+    # command: mysql --user=todo_user  --password=todo_password  todo_db < ./dump/migration.sql 
+  
+  server:
+    # リリースの時はbuildを../build/go/releaseに変更してください
+    build: ../build/go/develop
+    container_name: todo_server
+    volumes:
+      - ..:/go/src/todo_app
+    # restart: always
+    networks: 
+      - todo-network
+    ports:
+      - "8080:8080" 
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: todo_root_password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: todo_user
+      MYSQL_PASSWORD: todo_password
+      MYSQL_HOST: todo_host
+      TZ: 'Asia/Tokyo'
+    
+  
+volumes:
+  todo-db:
+networks:
+  todo-network:
